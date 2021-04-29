@@ -1,7 +1,7 @@
 # if not already installed 
 install.packages("fGarch")
 
-source('Functions Needed in Ranking.R')
+source('Functions Needed in THQ paper.R')
 pdf("Figures 1 to 3.pdf")
 
 library("fGarch")
@@ -14,7 +14,7 @@ set.seed(100371)
 par(mfrow=c(1,1))
 
 plotNdensity.fun(c(2.1,1.7,2.1),c(0.2,0.5,0.1), maxYaxis=4.5, xaxisrange=c(0.5,3.25),col=c("black","gray78","black"),lty=c(1,1,3))
-legend(0.65,4.6, box.lty=0, c(expression(mu["Α"]%~%N(2.1,0.2)),expression(mu["B"]%~%N(1.7,0.5)),expression(mu["C"]%~%N(2.1,0.1))), lty = c(1,1,3),  col=c("black","gray78","black"),lwd=2)
+legend(1,4.6, box.lty=0, c(expression(mu["A"]%~%N(2.1,0.2^2)),expression(mu["B"]%~%N(1.7,0.5^2)),expression(mu["C"]%~%N(2.1,0.1^2))), lty = c(1,1,3^2),  col=c("black","gray78","black"),lwd=2)
 abline(v=2.5,lty=6)
 ###############################################
 #Producing Figure 2 ###########################
@@ -24,13 +24,14 @@ par(mfrow=c(2,1))
 
 plotNdensity.fun(c(10,1,2,3),c(3,3,3,3), maxYaxis=0.4, xaxisrange=c(-6,15),  cols=c(1:4),lty=c(1,1,1,1))
 title("Scenario 1")
-legend(-8,0.4, c("P~N(10,3)","A~N(1,3)","B~N(2,3)","C~N(3,3)"), lty = rep(1,4),  col=1:4,lwd=2) 
+legend(-6,0.4,c(expression(mu["P"]%~%N(10,3^2)),expression(mu["A"]%~%N(1,3^2)),expression(mu["B"]%~%N(2,3^2)),expression(mu["C"]%~%N(3,3^2))), 
+       lty = rep(1,4),  col=1:4,lwd=2) 
+
 plotNdensity.fun(c(10,1,1,1),c(3,1,3,5), maxYaxis=0.4, xaxisrange=c(-6,15),  cols=1:4)
 abline(v=1)
-legend(-8,0.4, c("P~N(10,3)","A~N(1,1)","B~N(1,3)","C~N(1,5)"), lty = rep(1,4),  col=1:4,lwd=2) 
+legend(5,0.4,c(expression(mu["P"]%~%N(10,3^2)),expression(mu["A"]%~%N(1,1^2)),expression(mu["B"]%~%N(1,3^2)),expression(mu["C"]%~%N(1,5^2))), 
+       lty = rep(1,4),  col=1:4,lwd=2) 
 title("Scenario 2")
-
-
 
 ###############################################
 #Producing Figure 3 ###########################
